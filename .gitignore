@@ -3,3 +3,8 @@ target/
 *.iml
 .vscode/
 .DS_Store
+
+# Teacher docx and archive junk - never commit
+*.docx
+~$*
+__MACOSX/
