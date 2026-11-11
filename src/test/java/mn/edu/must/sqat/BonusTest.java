@@ -72,4 +72,14 @@ class BonusTest {
     void bonus_longStreakBrokenInMiddle_keepsBest_returns8() {
         assertEquals(8, DataFlowTargets.bonus(new int[] {1, 1, 1, 1, 1, 1, 0, 1, 1}, 8));
     }
+
+    // ---------- Part C: kills mutant M2 (best = present instead of max streak) ----------
+
+    // In every earlier test, (present >= 5) and (longest streak >= 5) had the SAME truth value at line 53,
+    // so best@43 = present (M2) gave the same output. Here present = 5 but the longest streak is only 3.
+    @Test
+    @DisplayName("K bonus([1,1,1,0,1,1],5)=5 | best(43->53F) with present=5 but best=3 (kills M2)")
+    void bonus_fivePresentButLongestStreakThree_returns5() {
+        assertEquals(5, DataFlowTargets.bonus(new int[] {1, 1, 1, 0, 1, 1}, 5));
+    }
 }
